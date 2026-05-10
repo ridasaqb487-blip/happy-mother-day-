@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Playfair Display", serif;
+  
+  --color-primary: #FF4D6D;
+  --color-primary-light: #FF758F;
+  --color-primary-dark: #A4133C;
+  --color-dark-accent: #5E1A1A;
+  --color-base-text: #4A0E0E;
+  --color-pastel-pink: #FFF5F7;
+  --color-rose: #FFB3C1;
+}
+
+@layer base {
+  body {
+    @apply bg-pastel-pink text-base-text overflow-x-hidden;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3 {
+    @apply tracking-tighter;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/40 backdrop-blur-xl border border-white rounded-[40px] shadow-xl;
+  }
+
+  .btn-primary {
+    @apply relative overflow-hidden px-10 py-5 rounded-3xl font-black text-white transition-all active:scale-95 text-lg;
+    background: var(--color-primary);
+    box-shadow: 0 20px 40px rgba(255, 77, 109, 0.25);
+  }
+
+  .btn-primary:hover {
+    @apply shadow-none translate-y-1;
+  }
+
+  .heart-bg {
+    @apply fixed inset-0 pointer-events-none z-0;
+  }
+}
+
+.bg-blur-circle-1 {
+  background: #FECDD3;
+  filter: blur(100px);
+  opacity: 0.4;
+}
+
+.bg-blur-circle-2 {
+  background: #F9A8D4;
+  filter: blur(120px);
+  opacity: 0.3;
+}
+
+.floating {
+  animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.ripple {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple 600ms linear;
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-pastel-pink);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-light);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
